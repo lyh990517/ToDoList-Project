@@ -2,10 +2,12 @@ package com.example.todoapp.Presentation.View
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todoapp.Data.Entity.ToDoEntity
 import com.example.todoapp.Presentation.Adapter.ToDoAdapter
@@ -54,11 +56,16 @@ internal class ToDoListActivity : BaseActivity<ToDoListViewModel>(), CoroutineSc
     }
 
     private fun handleSuccess(it: ToDoState.Success) = with(binding) {
-
         ToDoRefresh.isRefreshing = false
         ToDoRefresh.isEnabled = it.ToDoList.isNotEmpty()
         ToDoRecycler.isEnabled = it.ToDoList.isNotEmpty()
-
+        //isGone notWorking!!
+        if (it.ToDoList.isNotEmpty()) {
+            emptyView.text = ""
+        } else {
+            emptyView.text = "Create a ToDo List!"
+        }
+        Log.e("1", "${it.ToDoList.isNotEmpty()}")
         adapter.setData(it.ToDoList,
             DeleteListener = {
                 viewModel.deleteOne(it.id)
@@ -80,14 +87,14 @@ internal class ToDoListActivity : BaseActivity<ToDoListViewModel>(), CoroutineSc
     private fun initView() = with(binding) {
         ToDoRecycler.layoutManager = LinearLayoutManager(this@ToDoListActivity)
         ToDoRecycler.adapter = adapter
-
         ToDoRefresh.setOnRefreshListener {
             viewModel.fetchData()
         }
         inputButton.setOnClickListener {
-            if(inputBar.text.isEmpty() || contentInput.text.isEmpty()){
-                Toast.makeText(this@ToDoListActivity,"제목과 내용울 둘다 입력해주십시오.",Toast.LENGTH_SHORT).show()
-            }else{
+            if (inputBar.text.isEmpty() || contentInput.text.isEmpty()) {
+                Toast.makeText(this@ToDoListActivity, "제목과 내용울 둘다 입력해주십시오.", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
                 val entity = ToDoEntity(
                     title = inputBar.text.toString(),
                     content = contentInput.text.toString()
