@@ -15,7 +15,9 @@
         android:theme="@style/Theme.ToDoApp"
         tools:targetApi="31">
         <activity
-            android:name=".Presentation.View.ToDoListActivity"
+            android:name=".Presentation.View.ToDoListActivity" />
+        <activity
+            android:name=".Presentation.View.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
