@@ -54,7 +54,7 @@ internal class ToDoListActivity : BaseActivity<ToDoListViewModel>(), CoroutineSc
     }
 
     private fun handleSuccess(it: ToDoState.Success) = with(binding) {
-        empty.isGone = it.ToDoList.isNotEmpty()
+
         ToDoRefresh.isRefreshing = false
         ToDoRefresh.isEnabled = it.ToDoList.isNotEmpty()
         ToDoRecycler.isEnabled = it.ToDoList.isNotEmpty()

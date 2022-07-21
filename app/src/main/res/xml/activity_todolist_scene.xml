@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="3000">
+        <KeyFrameSet></KeyFrameSet>
+        <OnSwipe
+            motion:dragDirection="dragRight"
+            motion:touchAnchorId="@+id/inputView" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintBottom_toBottomOf="@+id/inputView"
+            motion:layout_constraintEnd_toEndOf="@+id/inputView"
+            motion:layout_constraintStart_toStartOf="@+id/inputView"
+            motion:layout_constraintTop_toTopOf="@+id/inputView" />
+        <Constraint
+            android:id="@+id/inputView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/inputBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:alpha="0"
+            motion:layout_constraintEnd_toStartOf="@+id/inputButton"
+            motion:layout_constraintStart_toStartOf="@id/inputView"
+            motion:layout_constraintTop_toTopOf="@id/inputView" />
+        <Constraint
+            android:id="@+id/inputButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0"
+            motion:layout_constraintBottom_toBottomOf="@id/inputBar"
+            motion:layout_constraintEnd_toEndOf="@id/inputView"
+            motion:layout_constraintStart_toEndOf="@id/inputBar"
+            motion:layout_constraintTop_toTopOf="@id/inputView" />
+        <Constraint
+            android:id="@+id/contentInput"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha="0"
+            motion:layout_constraintBottom_toBottomOf="@id/inputView"
+            motion:layout_constraintEnd_toEndOf="@id/inputView"
+            motion:layout_constraintStart_toStartOf="@id/inputView"
+            motion:layout_constraintTop_toBottomOf="@id/inputView" />
+        <Constraint
+            android:id="@+id/left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0"
+            motion:layout_constraintBottom_toBottomOf="@+id/inputView"
+            motion:layout_constraintEnd_toEndOf="@+id/inputView"
+            motion:layout_constraintStart_toStartOf="@+id/inputView"
+            motion:layout_constraintTop_toTopOf="@+id/inputView" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0"
+            motion:layout_constraintBottom_toBottomOf="@+id/inputView"
+            motion:layout_constraintEnd_toEndOf="@+id/inputView"
+            motion:layout_constraintStart_toStartOf="@+id/inputView"
+            motion:layout_constraintTop_toTopOf="@+id/inputView" />
+        <Constraint
+            android:id="@+id/inputView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+        <Constraint
+            android:id="@+id/inputBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            motion:layout_constraintEnd_toStartOf="@+id/inputButton"
+            motion:layout_constraintStart_toStartOf="@id/inputView"
+            motion:layout_constraintTop_toTopOf="@id/inputView" />
+        <Constraint
+            android:id="@+id/contentInput"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            motion:layout_constraintBottom_toBottomOf="@id/inputView"
+            motion:layout_constraintEnd_toEndOf="@id/inputBar"
+            motion:layout_constraintStart_toStartOf="@id/inputBar"
+            motion:layout_constraintTop_toBottomOf="@id/inputBar" />
+        <Constraint
+            android:id="@+id/inputButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            motion:layout_constraintBottom_toBottomOf="@id/inputBar"
+            motion:layout_constraintEnd_toEndOf="@id/inputView"
+            motion:layout_constraintStart_toEndOf="@id/inputBar"
+            motion:layout_constraintTop_toTopOf="@id/inputView" />
+        <Constraint
+            android:id="@+id/left"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            motion:layout_constraintBottom_toBottomOf="@id/inputView"
+            motion:layout_constraintEnd_toEndOf="@id/inputView"
+            motion:layout_constraintStart_toEndOf="@id/contentInput"
+            motion:layout_constraintTop_toBottomOf="@id/inputButton" />
+    </ConstraintSet>
+</MotionScene>

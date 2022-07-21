@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layoutDescription="@xml/activity_todolist_scene"
     tools:context=".Presentation.View.ToDoListActivity">
+
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/ToDoRefresh"
@@ -12,8 +14,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/inputView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ToDoRecycler"
@@ -21,17 +25,6 @@
             android:layout_height="match_parent"
             tools:listitem="@layout/item_todo" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    <TextView
-        android:id="@+id/empty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="empty!!"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/inputView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/inputView"
@@ -42,44 +35,62 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageView
+        android:id="@+id/right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_right_alt_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_left_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/inputBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:background="@color/white"
+        android:background="@drawable/input_shape"
         android:hint="메모 제목"
-        android:padding="3dp"
-        android:textSize="25sp"
-        app:layout_constraintTop_toTopOf="@id/inputView"
+        android:padding="10dp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/inputButton"
         app:layout_constraintStart_toStartOf="@id/inputView"
-         />
+        app:layout_constraintTop_toTopOf="@id/inputView" />
 
     <EditText
         android:id="@+id/contentInput"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginVertical="10dp"
-        android:background="@color/white"
+        android:background="@drawable/input_shape"
         android:gravity="left"
         android:hint="메모상세"
         android:padding="10dp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@id/inputView"
         app:layout_constraintEnd_toEndOf="@id/inputBar"
         app:layout_constraintStart_toStartOf="@id/inputBar"
         app:layout_constraintTop_toBottomOf="@id/inputBar" />
 
-    <Button
+    <ImageView
         android:id="@+id/inputButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="입력"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_baseline_add_24"
         app:layout_constraintBottom_toBottomOf="@id/inputBar"
         app:layout_constraintEnd_toEndOf="@id/inputView"
         app:layout_constraintStart_toEndOf="@id/inputBar"
-        app:layout_constraintTop_toTopOf="@id/inputView"
+        app:layout_constraintTop_toTopOf="@id/inputView" />
 
-        />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
